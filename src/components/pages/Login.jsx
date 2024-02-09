@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { userLogin } from "../connection/user.services"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
+import { UserContext } from "../context/UserContext";
 
 
 export default function Login() {
+
+  const userContext=useContext(UserContext);
 
   const navigate=useNavigate();
 
@@ -29,6 +32,8 @@ export default function Login() {
         console.log(userData)
         navigate('/')
         toast.success("Login SuccessFully !!")
+        userContext.setUserData(data)
+        userContext.setIsLogin(true)
       }).catch((error)=>{
         console.log(error)
       })
@@ -104,9 +109,9 @@ export default function Login() {
   
             <p className="mt-10 text-center text-sm text-gray-500">
               Not a member?{' '}
-              <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                Start a 14 day free trial
-              </a>
+              <Link to={'/register'} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                Register Here!!
+              </Link>
             </p>
           </div>
         </div>

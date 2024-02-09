@@ -7,9 +7,11 @@ import Register from './components/pages/Register';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Home from './components/pages/Home';
+import UserProvider from './components/context/UserProvider';
 
 function App() {
   return (
+    <UserProvider>
     <BrowserRouter>
     <ToastContainer/>
       <Navbar/>
@@ -19,6 +21,7 @@ function App() {
         <Route path='/register' element=<Register/> />
       </Routes>
     </BrowserRouter>
+    </UserProvider>
   );
 }
 
