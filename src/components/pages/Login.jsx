@@ -32,7 +32,8 @@ export default function Login() {
         console.log(userData)
         navigate('/')
         toast.success("Login SuccessFully !!")
-        userContext.setUserData(data)
+       // userContext.setUserData(userData)
+       userContext.login(userData)
         userContext.setIsLogin(true)
       }).catch((error)=>{
         console.log(error)
