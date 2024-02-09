@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userRegister } from "../connection/user.services";
 
 export default function Register() {
+
+  const navigate=useNavigate();
 
   const [data,setData]=useState({
     name:"",
@@ -28,6 +30,7 @@ export default function Register() {
     .then((userData)=>{
       console.log(userData)
       console.log("User Registered Successfully!!!")
+      navigate('/login')
     }).catch((error)=>{
       console.log(error)
     })

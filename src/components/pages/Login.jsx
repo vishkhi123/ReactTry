@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { userLogin } from "../connection/user.services"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify";
 
 
 export default function Login() {
@@ -26,7 +27,8 @@ export default function Login() {
       
       userLogin(data).then((userData)=>{
         console.log(userData)
-        navigate('/register')
+        navigate('/')
+        toast.success("Login SuccessFully !!")
       }).catch((error)=>{
         console.log(error)
       })
